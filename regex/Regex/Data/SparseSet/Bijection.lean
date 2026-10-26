@@ -21,7 +21,8 @@ public theorem surj_of_inj {n} (f : Fin n → Fin n) (h : Injective f) : Surject
         ⟨f ⟨n, by grind⟩, by grind⟩
     have inj' : Injective f' := by
       intro x y eq
-      grind
+      simp only [f'] at eq
+      split at eq <;> split at eq <;> grind
     have surj' : Surjective f' := ih f' inj'
 
     intro y

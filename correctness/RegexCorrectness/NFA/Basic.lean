@@ -54,10 +54,10 @@ theorem lt_of_inBounds_of_εStep {node : Node} {j k : Nat}
   (inBounds : node.inBounds k) (mem : j ∈ node.εStep) :
   j < k := by
   unfold Node.εStep at mem
-  split at mem <;>
-    try simp_all [Node.inBounds] <;>
+  split at mem <;> (
+    try simp_all [Node.inBounds]
     try cases mem <;>
-    simp_all
+    simp_all)
 
 theorem lt_of_εStep {nfa : NFA} {i j : Nat} {h : i < nfa.size}
   (wf : nfa.WellFormed) (mem : j ∈ nfa[i].εStep) : j < nfa.size := by
